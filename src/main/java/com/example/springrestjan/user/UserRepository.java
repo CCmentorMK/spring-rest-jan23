@@ -1,15 +1,14 @@
 package com.example.springrestjan.user;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-public interface UserRepository {
-    List<User> USERS = new ArrayList<>(Arrays.asList(
-        new User(1, "a@a.pl", "aaa"),
-        new User(2, "b@b.pl", "bbb"),
-        new User(3, "c@c.pl", "ccc")
-    ));
+public interface UserRepository extends JpaRepository<User, Integer> {
+    // SELECT * FROM users WHERE email = ? AND password = ?;
+    Optional<User> findByEmailAndPassword(String email, String password);
 }

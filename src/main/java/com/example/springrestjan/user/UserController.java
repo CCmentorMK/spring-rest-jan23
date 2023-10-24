@@ -1,5 +1,6 @@
 package com.example.springrestjan.user;
 
+import com.example.springrestjan.role.RoleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,26 +19,31 @@ public class UserController {
     public String hello(){
         return "hello!!!";
     }
-//    @GetMapping("/admin-access/user/getusers")
-//    ...
+
     @GetMapping("/open-access/user/get-users")
     public List<User> getUsers(){
         return userService.getAllUsers();
     }
     @PostMapping("/open-access/user/add-user")
     public List<User> addUser(
-            @RequestParam("userid") int userId,
             @RequestParam("email") String email,
             @RequestParam("password") String password
     ){
-        return userService.insertUser(new User(userId,email,password));
+        return userService.insertUser(new User(email,password));
     }
     @PatchMapping("/open-access/user/update-password")
     public void updateUserPassword(
-            @RequestParam("userid") int userId,
+            @RequestParam("user_id") int userId,
             @RequestParam("password") String password
     ){
         userService.updateUserById(userId, password);
+    }
+    @PutMapping("/open-access/user/add-role")
+    public void addRoleToUser(
+            @RequestParam("user_id") int userId,
+            @RequestParam("role_name") RoleName roleName
+    ){
+        userService.addRoleToUser(userId,roleName);
     }
     @DeleteMapping("/open-access/user/delete-user")
     public void deteleUser(

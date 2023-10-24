@@ -1,5 +1,8 @@
 package com.example.springrestjan.user;
 
+import com.example.springrestjan.role.Role;
+import com.example.springrestjan.role.RoleName;
+
 import java.util.List;
 
 public interface IUserService {
@@ -7,4 +10,5 @@ public interface IUserService {
     void deleteUserById(int userId);
     List<User> insertUser(User user);
     void updateUserById(int userId, String password);
+    void addRoleToUser(int userId, RoleName roleName);
 }
