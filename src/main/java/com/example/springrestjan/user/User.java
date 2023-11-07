@@ -23,9 +23,7 @@ public class User {
     private String password;
 
     @ManyToMany
-    @JoinTable(name = "users_roles",
-    joinColumns = @JoinColumn(name = "roles_role_id"),
-    inverseJoinColumns = @JoinColumn(name ="users_user_id"))
+    @JoinTable(name = "users_roles")
     private Set<Role> roles = new HashSet<>();
 
     public User(String email, String password) {

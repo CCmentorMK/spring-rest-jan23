@@ -12,6 +12,11 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleId;
-    @Enumerated(EnumType.STRING)
-    private RoleName role;
+//    @Enumerated(value = EnumType.STRING)
+//    private RoleType roleType;
+    private String roleName;
+
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
 }

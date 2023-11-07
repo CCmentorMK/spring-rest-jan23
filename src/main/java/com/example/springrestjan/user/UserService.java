@@ -1,9 +1,8 @@
 package com.example.springrestjan.user;
 
 import com.example.springrestjan.role.Role;
-import com.example.springrestjan.role.RoleName;
+import com.example.springrestjan.role.RoleType;
 import com.example.springrestjan.role.RoleRepository;
-import com.example.springrestjan.role.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -21,9 +20,9 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public void addRoleToUser(int userId, RoleName roleName) {
+    public void addRoleToUser(int userId, int roleId){
         Optional<User> userOptional = userRepository.findById(userId);
-        Optional<Role> roleOptional = roleRepository.findByRole(roleName);
+        Optional<Role> roleOptional = roleRepository.findById(roleId);
 
         if(userOptional.isPresent() && roleOptional.isPresent()){
             User user = userOptional.get();

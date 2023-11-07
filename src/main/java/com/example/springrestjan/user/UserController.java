@@ -1,6 +1,6 @@
 package com.example.springrestjan.user;
 
-import com.example.springrestjan.role.RoleName;
+import com.example.springrestjan.role.RoleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,9 +41,9 @@ public class UserController {
     @PutMapping("/open-access/user/add-role")
     public void addRoleToUser(
             @RequestParam("user_id") int userId,
-            @RequestParam("role_name") RoleName roleName
+            @RequestParam("role_id") int roleId
     ){
-        userService.addRoleToUser(userId,roleName);
+        userService.addRoleToUser(userId, roleId);
     }
     @DeleteMapping("/open-access/user/delete-user")
     public void deteleUser(
